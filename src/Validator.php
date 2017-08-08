@@ -2,13 +2,9 @@
 
 namespace Rix\Validation;
 
-function validate($data, $rules){
-    return Validator::validate($data, $rules);
-}
 
 class Validator
 {
-    protected static $validators = [];
 
     public static function validate($data , $rules)
     {
@@ -16,15 +12,26 @@ class Validator
         foreach ($rules as $key => $r){
             $val = isset($data[$key]) ? $data[$key] : null;
             foreach ($r as $rule){
-                $result = $rule($val, $key, $data);
+                $result = null;
+                if(is_callable($rule)){
+                    $result = $rule($val, $key, $data);
+                }
+                else if($rule instanceof AbstractRule) {
+                    if(false === $rule->validate($val, $key, $data)){
+                        $result = $rule->message($key);
+                    }
+                }
+                else {
+                    throw new \Exception("Invalid validation rule ${rule}");
+                }
                 if(!is_null($result)){
                     $errors[$key][] = $result;
                 }
             }
         }
-        if(count($errors))
+        if(count($errors)){
             throw new ValidationException($errors);
-        return true;
+        }
     }
     public static function only()
     {

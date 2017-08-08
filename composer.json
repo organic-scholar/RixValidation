@@ -9,7 +9,7 @@
     "require": {},
     "autoload": {
         "psr-4": {"Rix\\Validation\\": "src/"},
-        "files": ["src/Rules/all.php"]
+        "files": ["src/validate.php", "src/Rules/all.php"]
 
     }
 }

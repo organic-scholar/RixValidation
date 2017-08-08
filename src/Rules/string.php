@@ -2,8 +2,6 @@
 
 namespace Rix\Validation\Rules;
 
-use Rix\Validation\Validator;
-
 function length($min, $max){
     return function($val, $key, $data) use ($min, $max) {
         if($val == '' || $val == null) return null;
