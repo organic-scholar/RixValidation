@@ -1,0 +1,15 @@
+{
+    "name": "rix/validation",
+    "authors": [
+        {
+            "name": "nauman1225",
+            "email": "nauman1225@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"Rix\\Validation\\": "src/"},
+        "files": ["src/Rules/all.php"]
+
+    }
+}
