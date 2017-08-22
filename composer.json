@@ -1,5 +1,6 @@
 {
     "name": "rix/validation",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "nauman1225",
