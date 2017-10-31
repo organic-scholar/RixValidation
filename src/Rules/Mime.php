@@ -1,6 +1,6 @@
 <?php
 
-namespace Rix\Rules;
+namespace Rix\Validation\Rules;
 
 
 use Rix\Validation\AbstractRule;
